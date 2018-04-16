@@ -46,6 +46,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($request->isFormSubmittedRequest()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withAlert('We are sorry, something went wrong');
+        }
+
         return parent::render($request, $exception);
     }
 }

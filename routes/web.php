@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/**
+ * Our form for submitting
+ */
+Route::view('/form', 'form')->name('form');
+
+/**
+ * Our form submission end point that throws an exception
+ */
+Route::post('/form', function () {
+    throw new \Exception('Something went wrong');
+});
